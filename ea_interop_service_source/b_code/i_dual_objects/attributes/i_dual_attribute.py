@@ -134,6 +134,36 @@ class IDualAttribute(
         self.attribute.Visibility = \
             visibility
 
+    def __get_stereotype(
+            self) \
+            -> str:
+        stereotype = \
+            self.attribute.Stereotype
+
+        return \
+            stereotype
+
+    def __set_stereotype(
+            self,
+            stereotype: str):
+        self.attribute.Stereotype = \
+            stereotype
+
+    def __get_stereotype_ex(
+            self) \
+            -> str:
+        stereotype_ex = \
+            self.attribute.StereotypeEx
+
+        return \
+            stereotype_ex
+
+    def __set_stereotype_ex(
+            self,
+            stereotype_ex: str):
+        self.attribute.StereotypeEx = \
+            stereotype_ex
+
     def update(
             self):
         self.attribute.Update()
@@ -180,3 +210,13 @@ class IDualAttribute(
         property(
             fget=__get_visibility,
             fset=__set_visibility)
+
+    stereotype = \
+        property(
+            fget=__get_stereotype,
+            fset=__set_stereotype)
+
+    stereotype_ex = \
+        property(
+            fget=__get_stereotype_ex,
+            fset=__set_stereotype_ex)

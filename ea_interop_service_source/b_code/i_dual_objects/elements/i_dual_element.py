@@ -99,6 +99,21 @@ class IDualElement(
         self.element.Name = \
             name
 
+    def __get_notes(
+            self) \
+            -> str:
+        element_notes = \
+            self.element.Notes
+
+        return \
+            element_notes
+
+    def __set_notes(
+            self,
+            notes: str):
+        self.element.Notes = \
+            notes
+
     def __get_package_id(
             self) \
             -> int:
@@ -113,6 +128,36 @@ class IDualElement(
             package_id: int):
         self.element.PackageID = \
             package_id
+
+    def __get_stereotype(
+            self) \
+            -> str:
+        stereotype = \
+            self.element.Stereotype
+
+        return \
+            stereotype
+
+    def __set_stereotype(
+            self,
+            stereotype: str):
+        self.element.Stereotype = \
+            stereotype
+
+    def __get_stereotype_ex(
+            self) \
+            -> str:
+        stereotype_ex = \
+            self.element.StereotypeEx
+
+        return \
+            stereotype_ex
+
+    def __set_stereotype_ex(
+            self,
+            stereotype_ex: str):
+        self.element.StereotypeEx = \
+            stereotype_ex
 
     def update(
             self):
@@ -152,7 +197,22 @@ class IDualElement(
             fget=__get_name,
             fset=__set_name)
 
+    notes = \
+        property(
+            fget=__get_notes,
+            fset=__set_notes)
+
     package_id = \
         property(
             fget=__get_package_id,
             fset=__set_package_id)
+
+    stereotype = \
+        property(
+            fget=__get_stereotype,
+            fset=__set_stereotype)
+
+    stereotype_ex = \
+        property(
+            fget=__get_stereotype_ex,
+            fset=__set_stereotype_ex)

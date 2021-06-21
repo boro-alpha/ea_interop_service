@@ -14,5 +14,7 @@ def create_i_dual_diagram(
 
     i_dual_diagram.update()
 
+    container.diagrams.refresh()
+
     return \
         i_dual_diagram

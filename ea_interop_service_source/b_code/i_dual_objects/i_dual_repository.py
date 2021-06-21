@@ -46,6 +46,12 @@ class IDualRepository(
             traceback):
         self.exit()
 
+    def custom_command(
+            self,
+            *args):
+        self.repository.CustomCommand(
+            *args)
+
     def get_attribute_by_guid(
             self,
             attribute_guid: str) \
@@ -238,6 +244,12 @@ class IDualRepository(
         return \
             i_dual_project
 
+    def refresh_model_view(
+            self,
+            package_id: int):
+        self.repository.RefreshModelView(
+            package_id)
+
     def sql_query(
             self,
             sql: str) \
@@ -248,6 +260,36 @@ class IDualRepository(
 
         return \
             xml_string
+
+    def __get_batch_append(
+            self) \
+            -> bool:
+        batch_append = \
+            self.repository.BatchAppend
+
+        return \
+            batch_append
+
+    def __set_batch_append(
+            self,
+            batch_append: bool):
+        self.repository.BatchAppend = \
+            batch_append
+
+    def __get_enable_ui_updates(
+            self) \
+            -> bool:
+        enable_ui_updates = \
+            self.repository.EnableUIUpdates
+
+        return \
+            enable_ui_updates
+
+    def __set_enable_ui_updates(
+            self,
+            enable_ui_updates: bool):
+        self.repository.EnableUIUpdates = \
+            enable_ui_updates
 
     def __get_instance_guid(
             self) \
@@ -296,9 +338,19 @@ class IDualRepository(
         return \
             stereotypes
 
+    batch_append = \
+        property(
+            fget=__get_batch_append,
+            fset=__set_batch_append)
+
     connection_string = \
         property(
             fget=__get_connection_string)
+
+    enable_ui_updates = \
+        property(
+            fget=__get_enable_ui_updates,
+            fset=__set_enable_ui_updates)
 
     instance_guid = \
         property(

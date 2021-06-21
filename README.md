@@ -6,6 +6,10 @@ The (Python) EA Interop Service is a package developed by [BORO Solutions](https
 
 We suggest people use this module as a utility component of bigger projects, since this merely provides an interface to .eap and .eapx files.
 
+## Changes of the 0.1.0-alpha.1 Version
+
+Code has been extended since the previous version.
+
 ## Installation
 
 Either:

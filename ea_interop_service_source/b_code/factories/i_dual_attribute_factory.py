@@ -37,5 +37,7 @@ def create_i_dual_attribute(
 
     i_dual_attribute.update()
 
+    attributed_object.attributes.refresh()
+
     return \
         i_dual_attribute

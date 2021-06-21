@@ -18,5 +18,7 @@ def create_i_dual_stereotype(
 
     i_dual_stereotype.update()
 
+    i_dual_repository.stereotypes.refresh()
+
     return \
         i_dual_stereotype

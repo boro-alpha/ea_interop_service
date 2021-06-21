@@ -1,3 +1,5 @@
+from ea_interop_service_source.b_code.i_dual_objects.collections.i_dual_connector_collection import \
+    IDualConnectorCollection
 from ea_interop_service_source.b_code.i_dual_objects.collections.i_dual_element_collection import IDualElementCollection
 from ea_interop_service_source.b_code.i_dual_objects.packages.i_package import IPackage
 
@@ -14,6 +16,16 @@ class IDualPackage(
         self.package = \
             package
 
+    def __get_elements(
+            self) \
+            -> IDualElementCollection:
+        elements = \
+            IDualElementCollection(
+                ea_collection=self.package.Elements)
+
+        return \
+            elements
+
     def __get_name(
             self) \
             -> str:
@@ -29,6 +41,21 @@ class IDualPackage(
         self.package.Name = \
             name
 
+    def __get_flags(
+            self) \
+            -> str:
+        flags = \
+            self.package.Flags
+
+        return \
+            flags
+
+    def __set_flags(
+            self,
+            flags: str):
+        self.package.Flags = \
+            flags
+
     def __get_package_guid(
             self) \
             -> str:
@@ -37,6 +64,15 @@ class IDualPackage(
 
         return \
             package_guid
+
+    def __get_package_id(
+            self) \
+            -> int:
+        package_id = \
+            self.package.PackageID
+
+        return \
+            package_id
 
     def __get_packages(
             self):
@@ -50,15 +86,30 @@ class IDualPackage(
         return \
             packages
 
-    def __get_elements(
+    def __get_connectors(
             self) \
-            -> IDualElementCollection:
-        elements = \
-            IDualElementCollection(
-                ea_collection=self.package.Elements)
+            -> IDualConnectorCollection:
+        connector_collection = \
+            IDualConnectorCollection(
+                ea_collection=self.package.Connectors)
 
         return \
-            elements
+            connector_collection
+
+    def __get_stereotype_ex(
+            self) \
+            -> str:
+        stereotype_ex = \
+            self.package.StereotypeEx
+
+        return \
+            stereotype_ex
+
+    def __set_stereotype_ex(
+            self,
+            stereotype_ex: str):
+        self.package.StereotypeEx = \
+            stereotype_ex
 
     def update(
             self):
@@ -68,19 +119,37 @@ class IDualPackage(
             self):
         self.package.Refresh()
 
-    package_guid = \
-        property(
-            fget=__get_package_guid)
-
-    packages = \
-        property(
-            fget=__get_packages)
-
     elements = \
         property(
             fget=__get_elements)
+
+    flags = \
+        property(
+            fget=__get_flags,
+            fset=__set_flags)
 
     name = \
         property(
             fget=__get_name,
             fset=__set_name)
+
+    package_guid = \
+        property(
+            fget=__get_package_guid)
+
+    package_id = \
+        property(
+            fget=__get_package_id)
+
+    packages = \
+        property(
+            fget=__get_packages)
+
+    connectors = \
+        property(
+            fget=__get_connectors)
+
+    stereotype_ex = \
+        property(
+            fget=__get_stereotype_ex,
+            fset=__set_stereotype_ex)

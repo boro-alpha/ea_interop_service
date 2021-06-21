@@ -136,6 +136,21 @@ class IDualConnector(
         self.connector.Width = \
             width
 
+    def __get_notes(
+            self) \
+            -> str:
+        element_notes = \
+            self.connector.Notes
+
+        return \
+            element_notes
+
+    def __set_notes(
+            self,
+            notes: str):
+        self.connector.Notes = \
+            notes
+
     def update(
             self):
         self.connector.Update()
@@ -182,3 +197,8 @@ class IDualConnector(
         property(
             fget=__get_width,
             fset=__set_width)
+
+    notes = \
+        property(
+            fget=__get_notes,
+            fset=__set_notes)

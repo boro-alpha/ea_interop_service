@@ -7,6 +7,7 @@ def create_i_dual_connector(
         parent_object: IDualElement,
         connector_name: str,
         connector_type: str,
+        ea_object_note: str,
         ea_connector_stereotype_ex: str) \
         -> IDualConnector:
     if connector_name is None:
@@ -23,6 +24,9 @@ def create_i_dual_connector(
                 ea_object_name=ea_object_name,
                 ea_object_type=connector_type))
 
+    i_dual_connector.notes = \
+        ea_object_note
+
     i_dual_connector.supplier_id = \
         parent_object.element_id
 
@@ -36,10 +40,13 @@ def create_i_dual_connector(
     i_dual_connector.direction = \
         hard_coded_direction
 
-    i_dual_connector.stereotype_ex = \
-        ea_connector_stereotype_ex
+    if len(ea_connector_stereotype_ex) > 0:
+        i_dual_connector.stereotype_ex = \
+            ea_connector_stereotype_ex
 
     i_dual_connector.update()
+
+    child_object.connectors.refresh()
 
     return \
         i_dual_connector
